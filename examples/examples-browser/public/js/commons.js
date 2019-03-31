@@ -26,63 +26,63 @@ function renderNavBar(navbarId, exampleUri) {
   const examples = [
     {
       uri: 'face_detection',
-      name: 'Face Detection'
+      name: '人脸检测'
     },
     {
       uri: 'face_landmark_detection',
-      name: 'Face Landmark Detection'
+      name: '面部标识检测'
     },
     {
       uri: 'face_expression_recognition',
-      name: 'Face Expression Recognition'
+      name: '面部表情识别'
     },
     {
       uri: 'face_recognition',
-      name: 'Face Recognition'
+      name: '人脸识别'
     },
     {
       uri: 'face_extraction',
-      name: 'Face Extraction'
+      name: '面部提取'
     },
     {
       uri: 'video_face_tracking',
-      name: 'Video Face Tracking'
+      name: '视频人脸跟踪'
     },
     {
       uri: 'webcam_face_detection',
-      name: 'Webcam Face Detection'
+      name: '网络摄像头人脸检测'
     },
     {
       uri: 'webcam_face_landmark_detection',
-      name: 'Webcam Face Landmark Detection'
+      name: '网络摄像头人脸标识检测'
     },
     {
       uri: 'webcam_face_expression_recognition',
-      name: 'Webcam Face Expression Recognition'
+      name: '网络摄像头人脸表情识别'
     },
     {
       uri: 'bbt_face_landmark_detection',
-      name: 'BBT Face Landmark Detection'
+      name: 'BBT人脸标识检测'
     },
     {
       uri: 'bbt_face_similarity',
-      name: 'BBT Face Similarity'
+      name: 'BBT脸部相似度'
     },
     {
       uri: 'bbt_face_matching',
-      name: 'BBT Face Matching'
+      name: 'BBT面部匹配'
     },
     {
       uri: 'bbt_face_recognition',
-      name: 'BBT Face Recognition'
+      name: 'BBT人脸识别'
     },
     {
       uri: 'batch_face_landmarks',
-      name: 'Batch Face Landmark Detection'
+      name: '批量人脸标识检测'
     },
     {
       uri: 'batch_face_recognition',
-      name: 'Batch Face Recognition'
+      name: '批量人脸识别'
     }
   ]
 

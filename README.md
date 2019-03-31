@@ -5,43 +5,43 @@
 
 **JavaScript API for face detection and face recognition in the browser implemented on top of the tensorflow.js core API ([tensorflow/tfjs-core](https://github.com/tensorflow/tfjs-core))**
 
-Table of Contents:
+目录:
 
-* **[Resources](#resources)**
-  * **[Live Demos](#live-demos)**
-  * **[Tutorials](#tutorials)**
-* **[Examples](#examples)**
-  * **[Running the Examples](#running-the-examples)**
-* **[Available Models](#models)**
-  * **[Face Detection Models](#models-face-detection)**
-  * **[68 Point Face Landmark Detection Models](#models-face-landmark-detection)**
-  * **[Face Recognition Model](#models-face-recognition)**
-  * **[Face Expression Recognition Model](#models-face-expression-recognition)**
-* **[Getting Started](#getting-started)**
-  * **[face-api.js for the Browser](#getting-started-browser)**
+* **[资源](#resources)**
+  * **[现场演示](#live-demos)**
+  * **[教程](#tutorials)**
+* **[例子](#examples)**
+  * **[运行示例](#running-the-examples)**
+* **[可用模型](#models)**
+  * **[人脸检测模型](#models-face-detection)**
+  * **[68点面部标识检测模型](#models-face-landmark-detection)**
+  * **[人脸识别模型](#models-face-recognition)**
+  * **[人脸表情识别模型](#models-face-expression-recognition)**
+* **[入门](#getting-started)**
+  * **[face-api.js用于浏览器](#getting-started-browser)**
   * **[face-api.js for Nodejs](#getting-started-nodejs)**
-* **[Usage](#usage)**
-  * **[Loading the Models](#usage-loading-models)**
-  * **[High Level API](#usage-high-level-api)**
-  * **[Displaying Detection Results](#usage-displaying-detection-results)**
-  * **[Face Detection Options](#usage-face-detection-options)**
+* **[用法](#usage)**
+  * **[加载模型](#usage-loading-models)**
+  * **[高级API](#usage-high-level-api)**
+  * **[显示检测结果](#usage-displaying-detection-results)**
+  * **[人脸检测选项](#usage-face-detection-options)**
   * **[Utility Classes](#usage-utility-classes)**
   * **[Other Useful Utility](#other-useful-utility)**
 * **[API Documentation](https://justadudewhohacks.github.io/face-api.js/docs/globals.html)**
 
 <a name="resources"></a>
 
-# Resources
+# 资源
 
 <a name="live-demos"></a>
 
-## Live Demos
+## 现场演示
 
 **[Check out the live demos!](https://justadudewhohacks.github.io/face-api.js/)**
 
 <a name="tutorials"></a>
 
-## Tutorials
+## 教程
 
 Check out my face-api.js tutorials:
 
@@ -50,7 +50,7 @@ Check out my face-api.js tutorials:
 
 <a name="examples"></a>
 
-# Examples
+# 例子
 
 ## Face Recognition
 
@@ -82,7 +82,7 @@ Check out my face-api.js tutorials:
 
 <a name="running-the-examples"></a>
 
-## Running the Examples
+## 运行示例
 
 Clone the repository:
 
@@ -122,11 +122,11 @@ node faceDetection.js
 
 <a name="models"></a>
 
-# Available Models
+# 可用模型
 
 <a name="models-face-detection"></a>
 
-## Face Detection Models
+## 人脸检测模型
 
 ### SSD Mobilenet V1
 
@@ -152,13 +152,13 @@ MTCNN has been presented in the paper [Joint Face Detection and Alignment using 
 
 <a name="models-face-landmark-detection"></a>
 
-## 68 Point Face Landmark Detection Models
+## 68点面部标识检测模型
 
 This package implements a very lightweight and fast, yet accurate 68 point face landmark detector. The default model has a size of only 350kb (**face_landmark_68_model**) and the tiny model is only 80kb (**face_landmark_68_tiny_model**). Both models employ the ideas of depthwise separable convolutions as well as densely connected blocks. The models have been trained on a dataset of ~35k face images labeled with 68 face landmark points.
 
 <a name="models-face-recognition"></a>
 
-## Face Recognition Model
+## 人脸识别模型
 
 For face recognition, a ResNet-34 like architecture is implemented to compute a face descriptor (a feature vector with 128 values) from any given face image, which is used to describe the characteristics of a persons face. The model is **not** limited to the set of faces used for training, meaning you can use it for face recognition of any person, for example yourself. You can determine the similarity of two arbitrary faces by comparing their face descriptors, for example by computing the euclidean distance or using any other classifier of your choice.
 
@@ -168,13 +168,13 @@ The size of the quantized model is roughly 6.2 MB (**face_recognition_model**).
 
 <a name="models-face-expression-recognition"></a>
 
-## Face Expression Recognition Model
+## 人脸表情识别模型
 
 The face expression recognition model is lightweight, fast and provides reasonable accuracy. The model has a size of roughly 310kb and it employs depthwise separable convolutions and densely connected blocks. It has been trained on a variety of images from publicly available datasets as well as images scraped from the web. Note, that wearing glasses might decrease the accuracy of the prediction results.
 
 <a name="getting-started"></a>
 
-# Getting Started
+# 入门
 
 <a name="getting-started-browser"></a>
 
@@ -221,11 +221,11 @@ const { Canvas, Image, ImageData } = canvas
 faceapi.env.monkeyPatch({ Canvas, Image, ImageData })
 ```
 
-# Usage
+# 用法
 
 <a name="usage-loading-models"></a>
 
-## Loading the Models
+## 加载模型
 
 To load a model, you have provide the corresponding manifest.json file as well as the model weight files (shards) as assets. Simply copy them to your public or assets folder. The manifest.json and shard files of a model have to be located in the same directory / accessible under the same route.
 
@@ -285,7 +285,7 @@ const weights = new Float32Array(res.data)
 net.load(weights)
 ```
 
-## High Level API
+## 高级API
 
 In the following **input** can be an HTML img, video or canvas element or the id of that element.
 
@@ -470,7 +470,7 @@ const faceMatcher = new faceapi.FaceMatcher(labeledDescriptors)
 
 <a name="usage-displaying-detection-results"></a>
 
-## Displaying Detection Results
+## 显示检测结果
 
 Drawing the detected faces into a canvas:
 
@@ -516,7 +516,7 @@ faceapi.drawDetection(canvas, boxesWithText)
 
 <a name="usage-face-detection-options"></a>
 
-## Face Detection Options
+## 人脸检测选项
 
 ### SsdMobilenetv1Options
 

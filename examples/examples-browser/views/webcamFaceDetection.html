@@ -24,23 +24,23 @@
 
     <div class="row side-by-side">
 
-      <!-- face_detector_selection_control -->
+      <!-- 脸_检测器_选择_控制 -->
       <div id="face_detector_selection_control" class="row input-field" style="margin-right: 20px;">
         <select id="selectFaceDetector">
           <option value="ssd_mobilenetv1">SSD Mobilenet V1</option>
-          <option value="tiny_face_detector">Tiny Face Detector</option>
+          <option value="tiny_face_detector">小脸探测器</option>
           <option value="mtcnn">MTCNN</option>
         </select>
-        <label>Select Face Detector</label>
+        <label>选择面部检测器</label>
       </div>
       <!-- face_detector_selection_control -->
 
       <!-- fps_meter -->
       <div id="fps_meter" class="row side-by-side">
         <div>
-          <label for="time">Time:</label>
+          <label for="time">时间:</label>
           <input disabled value="-" id="time" type="text" class="bold">
-          <label for="fps">Estimated Fps:</label>
+          <label for="fps">估计的Fps:</label>
           <input disabled value="-" id="fps" type="text" class="bold">
         </div>
       </div>
@@ -53,7 +53,7 @@
     <span id="ssd_mobilenetv1_controls">
       <div class="row side-by-side">
         <div class="row">
-          <label for="minConfidence">Min Confidence:</label>
+          <label for="minConfidence">最小的可信度:</label>
           <input disabled value="0.5" id="minConfidence" type="text" class="bold">
         </div>
         <button
@@ -77,7 +77,7 @@
       <div class="row side-by-side">
         <div class="row input-field" style="margin-right: 20px;">
           <select id="inputSize">
-            <option value="" disabled selected>Input Size:</option>
+            <option value="" disabled selected>输入大小:</option>
             <option value="128">128 x 128</option>
             <option value="160">160 x 160</option>
             <option value="224">224 x 224</option>
@@ -86,10 +86,10 @@
             <option value="512">512 x 512</option>
             <option value="608">608 x 608</option>
           </select>
-          <label>Input Size</label>
+          <label>输入大小</label>
         </div>
         <div class="row">
-          <label for="scoreThreshold">Score Threshold:</label>
+          <label for="scoreThreshold">分数阈值:</label>
           <input disabled value="0.5" id="scoreThreshold" type="text" class="bold">
         </div>
         <button
@@ -112,7 +112,7 @@
     <span id="mtcnn_controls">
       <div class="row side-by-side">
         <div class="row">
-          <label for="minFaceSize">Minimum Face Size:</label>
+          <label for="minFaceSize">最小面部尺寸:</label>
           <input disabled value="20" id="minFaceSize" type="text" class="bold">
         </div>
         <button
@@ -166,12 +166,12 @@
     }
 
     async function run() {
-      // load face detection model
+      // 加载面检测模型
       await changeFaceDetector(TINY_FACE_DETECTOR)
       changeInputSize(128)
 
-      // try to access users webcam and stream the images
-      // to the video element
+      // 试着访问用户网络摄像头并以流式传输图像
+      //到视频元素
       const stream = await navigator.mediaDevices.getUserMedia({ video: {} })
       const videoEl = $('#inputVideo').get(0)
       videoEl.srcObject = stream
