@@ -20,6 +20,7 @@
     <div style="position: relative" class="margin">
       <video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted></video>
       <canvas id="overlay" />
+      <canvas id="canvas" width="480" height="320"/>
     </div>
 
     <div class="row side-by-side">
@@ -131,10 +132,15 @@
     </span>
     <!-- mtcnn_controls -->
 
+
+
   </body>
 
   <script>
     let forwardTimes = []
+    let canvas = $('#canvas').get(0);
+    let context = canvas.getContext('2d')
+    const threshold = 0.4
 
     function updateTimeStats(timeInMs) {
       forwardTimes = [timeInMs].concat(forwardTimes).slice(0, 30)
@@ -160,6 +166,27 @@
 
       if (result) {
         drawDetections(videoEl, $('#overlay').get(0), [result])
+        //生成图像
+        context.drawImage(videoEl,0,0,480,320);
+        let image = new Image()
+        image.src =  canvas.toDataURL("image/png")
+        // 加载脸部识别模型
+        await  faceapi.loadFaceRecognitionModel()
+        // 加载考勤初始化照片信息
+        const input = await faceapi.fetchImage("yinlongfei.png")
+        // 获取脸部描述信息
+        const desc1 = await faceapi.computeFaceDescriptor(input)
+        // 获取摄像头获取的脸部描述信息
+        const desc2 = await faceapi.computeFaceDescriptor(image)
+        //计算两个脸部描述信息是否相等
+        const distance = faceapi.round(
+                faceapi.euclideanDistance(desc1, desc2)
+        )
+        if (distance > threshold) {
+          console.log("不是一个人啊")
+        }else {
+          console.log("欢迎殷龙飞来到龙飞工作室"+distance)
+        }
       }
 
       setTimeout(() => onPlay())
@@ -175,6 +202,8 @@
       const stream = await navigator.mediaDevices.getUserMedia({ video: {} })
       const videoEl = $('#inputVideo').get(0)
       videoEl.srcObject = stream
+
+
     }
 
     function updateResults() {}
